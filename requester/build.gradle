@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.kotlin.jvm' version "1.6.21"
+    id 'org.springframework.boot'  version '2.7.2'
+    id 'io.spring.dependency-management' version '1.0.12.RELEASE'
+    id "org.jetbrains.kotlin.plugin.spring" version "1.6.21"
+}
+
+group 'cn.sdack'
+version '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.jetbrains.kotlin:kotlin-reflect'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
+    implementation "com.fasterxml.jackson.module:jackson-module-kotlin"
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation([project(":api")]){
+        exclude group: 'org.springframework.boot'
+    }
+    implementation 'com.alibaba.rsocket:alibaba-rsocket-core:1.1.3'
+    implementation 'com.alibaba.rsocket:alibaba-rsocket-spring-boot-starter:1.1.3'
+    implementation 'org.springframework.shell:spring-shell-starter:2.1.0'
+}
+
+test {
+    useJUnitPlatform()
+}
